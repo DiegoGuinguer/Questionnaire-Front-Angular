@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Personlogin } from 'src/app/model/personaLogin.model';
+import { Personlogin, PersonResponseLogin } from 'src/app/model/personLogin.model';
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
@@ -25,20 +25,20 @@ export class LoginComponent {
   login() {
     if (this.formLogin.valid)
     {
-      const credenciales: Personlogin = {
+      const credentials: Personlogin = {
         Email: this.formLogin.value.Correo,
         Password: this.formLogin.value.Contrasenna
       };
 
-      this._authService.verificarCredenciales(credenciales).subscribe({
-        next: (response: any) => {
+      this._authService.verifyCredentials(credentials).subscribe({
+        next: (response: PersonResponseLogin) => {
           if (response.success) {
             this.router.navigate(['/home']);
             this._authService.auth = true;
             this._authService.Id = response.value.id;
             sessionStorage.setItem('personId', response.value.id);
             sessionStorage.setItem('auth', 'true');
-            sessionStorage.setItem('isAdmin', response.value.isAdmin);
+            sessionStorage.setItem('isAdmin', response.value.isAdmin.toString());
             sessionStorage.setItem('isAuthenticated','true');
           } else {
             this.loginError = 'Error: algo no está bien, intenta de nuevo.';
@@ -55,6 +55,10 @@ export class LoginComponent {
     else {
       this.formLogin.markAllAsTouched();
     }
+  }
+
+  redirectToRegister(): void {
+    this.router.navigate(['/sign-in']);
   }
 
   hasErrors(controlName: string, errorType: string) {

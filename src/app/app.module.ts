@@ -10,10 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatesurveyComponent } from './pages/createsurvey/createsurvey.component';
 import { ManageSurveyComponent } from './pages/manage-survey/manage-survey.component';
 import { SurveySolverComponent } from './pages/survey-solver/survey-solver.component';
+import { SignInComponent } from './pages/login/sign-in/sign-in.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ManageSurveyComponent, SurveySolverComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, ManageSurveyComponent, SurveySolverComponent, SignInComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

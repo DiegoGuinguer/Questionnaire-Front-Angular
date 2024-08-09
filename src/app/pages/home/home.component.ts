@@ -1,7 +1,6 @@
 // home.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth/auth.service';
-import { PersonResponseLogin } from 'src/app/model/personaLogin.model';
 import { PersonService } from 'src/app/service/Person.service';
 import { Router } from '@angular/router';
 import { PersonResponse } from 'src/app/model/person.models';

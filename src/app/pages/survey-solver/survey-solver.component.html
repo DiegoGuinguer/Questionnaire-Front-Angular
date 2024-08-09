@@ -37,17 +37,17 @@
     </div>
   </div>
 
-  <div class="bg-white border border-gray-200 rounded-lg">
-    <!-- Mostrar preguntas faltantes -->
+  <div class="bg-gray-100 border border-gray-200 rounded-lg">
     <div *ngIf="unansweredQuestions.length" class="bg-yellow-200 p-4 rounded-lg">
-      <h3 class="text-lg font-semibold text-yellow-800 mb-2">Preguntas que faltan por responder:</h3>
+      <h3 class="text-lg font-semibold text-red-950
+       mb-2">Preguntas que faltan por responder:</h3>
       <ul class="list-disc pl-5">
         <li *ngFor="let question of unansweredQuestions">Pregunta: {{ question.text }}</li>
       </ul>
     </div>
 
     <!-- Botón para enviar -->
-    <div class="flex justify-center">
+    <div class="mb-6 p-4 rounded-lg  flex justify-center">
       <button
         [disabled]="isSubmitDisabled()"
         class="bg-blue-500 text-white px-4 py-2 rounded-lg"

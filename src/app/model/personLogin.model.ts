@@ -14,3 +14,11 @@ export interface Personlogin {
   Email: string;
   Password: string;
 }
+
+export interface PersonSignIn {
+  userName: string;
+  password: string;
+  name: string;
+  email: string;
+}
+
