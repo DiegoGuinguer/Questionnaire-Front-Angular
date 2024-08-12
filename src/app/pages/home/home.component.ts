@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.authService.Id;
+    this.userId = this.authService.id;
     if (this.userId) {
       this.personService.getUserInfo(this.userId).subscribe({
         next: (response: PersonResponse) => {

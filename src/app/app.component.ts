@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './service/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +11,19 @@ export class AppComponent implements OnInit {
   isAuthenticated = false;
   isMenuOpen = false;
 
+  constructor(private authService: AuthService) {}
+
   ngOnInit(): void {
     // Configuración inicial
     sessionStorage.setItem('baseUrl', 'https://localhost:44321/api/v1');
-    this.isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
-  }
-
-  login(): void {
-    this.isAuthenticated = true;
-    sessionStorage.setItem('isAuthenticated', 'true');
+    this.authService.isAuthenticated.subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+    });
   }
 
   logout(): void {
+    this.authService.logout();
     this.isAuthenticated = false;
-    sessionStorage.setItem('isAuthenticated', 'false');
   }
 
   toggleMenu(): void {

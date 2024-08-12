@@ -14,8 +14,7 @@ export class LoginComponent {
   loginError: string = '';
   formLogin: FormGroup;
 
-  constructor(private form: FormBuilder, private router: Router, private _authService: AuthService)
-  {
+  constructor(private form: FormBuilder, private router: Router, private _authService: AuthService) {
     this.formLogin = this.form.group({
       Correo: ['', [Validators.required, Validators.email]],
       Contrasenna: ['', Validators.required]
@@ -23,8 +22,7 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.formLogin.valid)
-    {
+    if (this.formLogin.valid) {
       const credentials: Personlogin = {
         Email: this.formLogin.value.Correo,
         Password: this.formLogin.value.Contrasenna
@@ -34,25 +32,19 @@ export class LoginComponent {
         next: (response: PersonResponseLogin) => {
           if (response.success) {
             this.router.navigate(['/home']);
-            this._authService.auth = true;
-            this._authService.Id = response.value.id;
-            sessionStorage.setItem('personId', response.value.id);
-            sessionStorage.setItem('auth', 'true');
-            sessionStorage.setItem('isAdmin', response.value.isAdmin.toString());
-            sessionStorage.setItem('isAuthenticated','true');
+            this._authService.login(response);
           } else {
             this.loginError = 'Error: algo no está bien, intenta de nuevo.';
             this.loginErrorSwitch = true;
           }
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error(error);
           this.loginError = 'Error: algo no está bien, intenta de nuevo.';
           this.loginErrorSwitch = true;
         }
       });
-    }
-    else {
+    } else {
       this.formLogin.markAllAsTouched();
     }
   }
