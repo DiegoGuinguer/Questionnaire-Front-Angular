@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PersonResponseLogin, PersonSignIn } from '../model/personLogin.model';
-import { PersonResponse } from '../model/person.models';
+import { PersonResponse, PersonUpdate } from '../model/person.models';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +22,11 @@ export class PersonService {
   // Método para crear usuarios
   createUser(user: PersonSignIn): Observable<any> {
     return this.http.post(`${this.personApiUrl}`, user);
+  }
+
+  // Método para actualizar usuarios
+  updateUser(userId: string, user: PersonUpdate) : Observable<any>
+  {
+    return this.http.put(`${this.personApiUrl}/${userId}`, user);
   }
 }

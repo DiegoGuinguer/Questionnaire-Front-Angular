@@ -33,3 +33,11 @@ export interface Survey {
   lastModifiedBy: string;
   id: string;
 }
+
+export interface PersonUpdate {
+  id: string;
+  nameUser: string;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+}

@@ -11,10 +11,11 @@ import { CreatesurveyComponent } from './pages/createsurvey/createsurvey.compone
 import { ManageSurveyComponent } from './pages/manage-survey/manage-survey.component';
 import { SurveySolverComponent } from './pages/survey-solver/survey-solver.component';
 import { SignInComponent } from './pages/login/sign-in/sign-in.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ManageSurveyComponent, SurveySolverComponent, SignInComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, ManageSurveyComponent, SurveySolverComponent, SignInComponent, UserProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
